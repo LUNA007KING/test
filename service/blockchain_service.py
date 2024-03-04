@@ -123,7 +123,9 @@ def fetch_validator_metadata(validator_address, node_url='http://127.0.0.1:26657
 
         # Executing the command without using shell=True for security reasons
         result = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        print(result)
         output = result.stdout
+        print(output)
         metadata = {
             'email': re.search(r'Email: (.*)', output).group(1),
             # 'description': re.search(r'Description: (.*)', output).group(1),
@@ -264,7 +266,7 @@ def update_blockchain_data():
         except Exception as e:
             logger.error(f"Error updating or inserting validator: {e}")
 
-    update_address(db_manager)
+    # update_address(db_manager)
     update_metadata(db_manager)
     update_status(db_manager)
 
