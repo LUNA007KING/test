@@ -1,5 +1,5 @@
 import logging
-from service.bot_service import main as start_bot_service
+from service.blockchain_service import *
 # from scheduler import start_scheduler
 from db.database_manager import DatabaseManager
 from config.settings import DB_CONFIG
@@ -16,10 +16,11 @@ def initialize_database():
 
 
 def main():
-    # initialize_database()
+    initialize_database()
+    update_blockchain_data()
     # start_scheduler()
 
-    start_bot_service()
+
 
 
 if __name__ == '__main__':
