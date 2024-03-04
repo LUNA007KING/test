@@ -318,9 +318,9 @@ def update_metadata(db_manager):
             db_manager.update_data(conditions, update_data)
             # logger.info(f"Metadata for validator {validator_id} updated successfully.")
 
-            if commission_rate_changed:
-                subscribed_users = fetch_subscribed_users(db_manager, validator_id)
-                notify_users_of_change(subscribed_users, validator_id, 'commission_rate', new_commission_rate)
+            # if commission_rate_changed:
+            #     subscribed_users = fetch_subscribed_users(db_manager, validator_id)
+            #     notify_users_of_change(subscribed_users, validator_id, 'commission_rate', new_commission_rate)
         else:
             logger.error(f"Failed to fetch metadata for validator {validator_id}: {metadata_result.error}")
 
@@ -341,9 +341,9 @@ def update_status(db_manager):
             db_manager.update_data(conditions, update_data)
             logger.info(f"Status for validator {validator_id} updated to {new_status}.")
 
-            if status_changed:
-                subscribed_users = fetch_subscribed_users(db_manager, validator_id)
-                notify_users_of_change(subscribed_users, validator_id, 'status', new_status)
+            # if status_changed:
+            #     subscribed_users = fetch_subscribed_users(db_manager, validator_id)
+            #     notify_users_of_change(subscribed_users, validator_id, 'status', new_status)
         else:
             logger.error(f"Failed to fetch status for validator {validator_id}: {status_result.error}")
 
@@ -356,5 +356,3 @@ def notify_users_of_change(subscribed_users, validator_id, change_type, new_valu
         logger.info(f"Notify user {user} about {change_type} change for validator {validator_id} to {new_value}.")
 
 
-initialize_database()
-update_blockchain_data()
